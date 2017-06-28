@@ -22,7 +22,8 @@ provisioner:
           - artifactory
 
 platforms:
-  - name: debian
+  - name: debian-8
+
 suites:
   - name: default
     provisioner:
