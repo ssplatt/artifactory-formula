@@ -1,0 +1,42 @@
+# vim: ft=yaml
+---
+driver:
+  name: docker
+
+provisioner:
+  name: salt_solo
+  is_file_root: true
+  salt_copy_filter:
+    - .kitchen
+    - .git
+  chef_bootstrap_url: "https://gist.githubusercontent.com/ssplatt/d23ea8e396b2780b31f6a919aa109d21/raw/35f3e582b5360e2f43f518042a45b9cde530384d/salt-no-chef.sh"
+  state_top:
+    base:
+      "*":
+        - test.mockup
+        - artifactory
+  pillars:
+    top.sls:
+      base:
+        "*":
+          - artifactory
+
+platforms:
+  - name: debian
+suites:
+  - name: default
+    provisioner:
+      pillars:
+        artifactory.sls:
+          artifactory:
+            enabled: true
+
+  - name: oss
+    provisioner:
+      pillars-from-files:
+        artifactory.sls: pillar-oss.sls
+
+  - name: pro
+    provisioner:
+      pillars-from-files:
+        artifactory.sls: pillar-pro.sls

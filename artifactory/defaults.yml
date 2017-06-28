@@ -1,0 +1,12 @@
+# vim: ft=yaml
+artifactory:
+  enabled: false
+  pkg: jfrog-artifactory-oss
+  dep_pkgs:
+    - openjdk-8-jre-headless
+    - ca-certificates-java
+  dep_from_repo: jessie-backports
+  service:
+    name: artifactory
+    state: dead
+    enable: false
