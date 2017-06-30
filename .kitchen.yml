@@ -6,10 +6,10 @@ driver:
 provisioner:
   name: salt_solo
   is_file_root: true
+  salt_bootstrap_url: 'https://bootstrap.saltstack.com'
   salt_copy_filter:
     - .kitchen
     - .git
-  chef_bootstrap_url: "https://gist.githubusercontent.com/ssplatt/d23ea8e396b2780b31f6a919aa109d21/raw/35f3e582b5360e2f43f518042a45b9cde530384d/salt-no-chef.sh"
   state_top:
     base:
       "*":
