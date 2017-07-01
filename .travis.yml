@@ -16,7 +16,7 @@ env:
 script:
   - bundle exec docker version
   - bundle exec kitchen --version
-  - KITCHEN_LOCAL_YAML=.kitchen-docker.yml kitchen test ${INSTANCE}
+  - KITCHEN_YAML=.kitchen-docker.yml kitchen test ${INSTANCE}
 
 after_script:
   - docker images
